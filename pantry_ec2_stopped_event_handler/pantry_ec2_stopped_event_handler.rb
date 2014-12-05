@@ -8,9 +8,8 @@ module Wonga
 
       def handle_message(message)
         @logger.info "Returning stopped event for Request:#{message['id']}, Name:#{message['instance_name']}"
-        message[:event] = "shutdown"
+        message[:event] = 'shutdown'
         @api_client.send_put_request("/api/ec2_instances/#{message['id']}", message)
-        @logger.info "Returned stopped event for Request:#{message['id']}, Name:#{message['instance_name']} succeeded"
       end
     end
   end
